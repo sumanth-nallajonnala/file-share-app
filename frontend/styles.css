@@ -6,12 +6,51 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
     min-height: 100vh;
     padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Floating particles effect */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: moveParticles 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes moveParticles {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(50px);
+    }
 }
 
 .container {
@@ -253,12 +292,29 @@ input[type="file"] {
    ============================================ */
 
 .auth-page {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: moveParticles 20s linear infinite;
+    pointer-events: none;
 }
 
 .auth-container {
@@ -493,4 +549,69 @@ input[type="file"] {
     .dashboard-header h1 {
         font-size: 1.5em;
     }
+}
+
+/* Floating shapes animation */
+.container::before,
+.container::after,
+.auth-card::before,
+.auth-card::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.container::before {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #667eea, transparent);
+    top: -150px;
+    right: -150px;
+    animation: float 8s ease-in-out infinite;
+}
+
+.container::after {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #764ba2, transparent);
+    bottom: -200px;
+    left: -200px;
+    animation: float 10s ease-in-out infinite reverse;
+}
+
+.auth-card::before {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, #f093fb, transparent);
+    top: -100px;
+    left: -100px;
+    animation: float 7s ease-in-out infinite;
+}
+
+.auth-card::after {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, #4facfe, transparent);
+    bottom: -80px;
+    right: -80px;
+    animation: float 9s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+    }
+}
+
+/* Make container position relative for floating shapes */
+.container,
+.auth-card {
+    position: relative;
+    z-index: 1;
 }
