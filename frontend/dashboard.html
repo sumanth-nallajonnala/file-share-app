@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - File Share</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>📤 Your Secret Vault</h1>
+            <button class="logout-btn" onclick="logout()">Logout 🚪</button>
+        </div>
+        <p class="subtitle">Transfer files securely - Only you can access them!</p>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('upload')">📤 Upload</button>
+            <button class="tab" onclick="switchTab('download')">📥 Download</button>
+        </div>
+
+        <div id="upload-section" class="section active">
+            <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">📁</div>
+                <h3>Drop your file here</h3>
+                <p>or click to browse</p>
+                <p style="color: #999; font-size: 0.85em; margin-top: 10px;">Max 1 MB</p>
+            </div>
+            <input type="file" id="fileInput">
+
+            <div class="file-info" id="fileInfo">
+                <div class="file-name" id="fileName"></div>
+                <div class="file-size" id="fileSize"></div>
+            </div>
+
+            <div id="uploadMessage" class="message"></div>
+
+            <label class="label">📝 Name your file</label>
+            <input type="text" id="uploadName" placeholder="e.g., My Project PPT">
+
+            <label class="label">🔐 Set secret code (4-6 digits)</label>
+            <input type="password" id="uploadCode" placeholder="e.g., 1234" maxlength="6">
+
+            <button class="btn" onclick="uploadFile()">Upload File 🚀</button>
+
+            <div class="storage-info">
+                💾 Your files: <span id="fileCount">0</span> | Total size: <span id="totalSize">0 KB</span>
+            </div>
+        </div>
+
+        <div id="download-section" class="section">
+            <label class="label">📝 File name</label>
+            <input type="text" id="downloadName" placeholder="Enter file name">
+
+            <label class="label">🔐 Secret code</label>
+            <input type="password" id="downloadCode" placeholder="Enter secret code">
+
+            <button class="btn" onclick="downloadFile()">Retrieve File 📥</button>
+
+            <div id="downloadMessage" class="message"></div>
+
+            <div id="downloadResult"></div>
+
+            <div class="storage-info">
+                💡 Tip: Only your files are shown here
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

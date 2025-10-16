@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - File Share</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Welcome Back, Secret Agent 🕵️</h1>
+                <p>Enter your secret PIN to access your vault</p>
+            </div>
+
+            <div id="loginMessage" class="message"></div>
+
+            <form id="loginForm" class="auth-form">
+                <div class="input-group">
+                    <label for="pin">🔐 Enter your super-secret PIN</label>
+                    <input 
+                        type="password" 
+                        id="pin" 
+                        placeholder="4-6 digit PIN" 
+                        maxlength="6"
+                        pattern="\d*"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="auth-btn">
+                    Let Me In 🔓
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <p>No secret PIN yet? <a href="signup.html">Create One 🚀</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

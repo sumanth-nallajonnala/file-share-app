@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - File Share</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Create Your Secret Identity 🕵️</h1>
+                <p>Choose a 4-6 digit PIN to secure your files</p>
+            </div>
+
+            <div id="signupMessage" class="message"></div>
+
+            <form id="signupForm" class="auth-form">
+                <div class="input-group">
+                    <label for="newPin">🔐 Create a super-secret PIN</label>
+                    <input 
+                        type="password" 
+                        id="newPin" 
+                        placeholder="4-6 digit PIN (numbers only)" 
+                        maxlength="6"
+                        pattern="\d*"
+                        required
+                    >
+                    <small>Only numbers allowed (e.g., 1234)</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="confirmPin">🔐 Confirm your PIN</label>
+                    <input 
+                        type="password" 
+                        id="confirmPin" 
+                        placeholder="Re-enter your PIN" 
+                        maxlength="6"
+                        pattern="\d*"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="auth-btn">
+                    Join the Club 🎉
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already a member of the spy squad? <a href="login.html">Login Here 🔓</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

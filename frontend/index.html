@@ -6,64 +6,37 @@
     <title>Quick File Share</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="container">
-        <h1>📤 Quick File Share</h1>
-        <p class="subtitle">Transfer files from PC to Mobile instantly - No login required!</p>
-
-        <div class="tabs">
-            <button class="tab active" onclick="switchTab('upload')">📤 Upload</button>
-            <button class="tab" onclick="switchTab('download')">📥 Download</button>
-        </div>
-
-        <div id="upload-section" class="section active">
-            <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
-                <div class="upload-icon">📁</div>
-                <h3>Drop your file here</h3>
-                <p>or click to browse</p>
-                <p style="color: #999; font-size: 0.85em; margin-top: 10px;">Max 1 MB</p>
-            </div>
-            <input type="file" id="fileInput">
-
-            <div class="file-info" id="fileInfo">
-                <div class="file-name" id="fileName"></div>
-                <div class="file-size" id="fileSize"></div>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card landing">
+            <div class="auth-header">
+                <h1>📤 Quick File Share</h1>
+                <p>Secure file sharing made simple</p>
             </div>
 
-            <div id="uploadMessage" class="message"></div>
-
-            <label class="label">📝 Name your file</label>
-            <input type="text" id="uploadName" placeholder="e.g., My Project PPT">
-
-            <label class="label">🔐 Set secret code (4-6 digits)</label>
-            <input type="password" id="uploadCode" placeholder="e.g., 1234" maxlength="6">
-
-            <button class="btn" onclick="uploadFile()">Upload File 🚀</button>
-
-            <div class="storage-info">
-                💾 Files stored: <span id="fileCount">0</span> | Total size: <span id="totalSize">0 KB</span>
+            <div class="landing-features">
+                <div class="feature">
+                    <span class="feature-icon">🔐</span>
+                    <h3>Secure & Private</h3>
+                    <p>Your files, your PIN, your privacy</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📱</span>
+                    <h3>Any Device</h3>
+                    <p>Access from PC, mobile, anywhere</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Super Fast</h3>
+                    <p>Upload and share in seconds</p>
+                </div>
             </div>
-        </div>
 
-        <div id="download-section" class="section">
-            <label class="label">📝 File name</label>
-            <input type="text" id="downloadName" placeholder="Enter file name">
-
-            <label class="label">🔐 Secret code</label>
-            <input type="password" id="downloadCode" placeholder="Enter secret code">
-
-            <button class="btn" onclick="downloadFile()">Retrieve File 📥</button>
-
-            <div id="downloadMessage" class="message"></div>
-
-            <div id="downloadResult"></div>
-
-            <div class="storage-info">
-                💡 Tip: Files are stored in your browser session
+            <div class="landing-buttons">
+                <a href="login.html" class="auth-btn">Login 🔓</a>
+                <a href="signup.html" class="auth-btn secondary">Sign Up 🚀</a>
             </div>
         </div>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>

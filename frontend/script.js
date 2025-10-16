@@ -1,5 +1,28 @@
 const API_URL = 'https://file-share-app-dbrm.onrender.com/api';
 
+// Check authentication on dashboard load
+window.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        window.location.href = 'login.html';
+        return;
+    }
+});
+
+// Logout function
+function logout() {
+    localStorage.removeItem('authToken');
+    window.location.href = 'login.html';
+}
+
+// Get auth token for API requests
+function getAuthHeaders() {
+    const token = localStorage.getItem('authToken');
+    return {
+        'Authorization': `Bearer ${token}`
+    };
+}
+
 function switchTab(tab) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -87,17 +110,23 @@ async function uploadFile() {
 
         const response = await fetch(`${API_URL}/upload`, {
             method: 'POST',
+            headers: getAuthHeaders(),
             body: formData
         });
 
         const result = await response.json();
 
         if (!response.ok) {
+            if (response.status === 401) {
+                localStorage.removeItem('authToken');
+                window.location.href = 'login.html';
+                return;
+            }
             throw new Error(result.error || 'Upload failed');
         }
 
         showMessage('uploadMessage', 
-            `✅ File "${name}" uploaded successfully! You can now access it from any device.`, 
+            `✅ File "${name}" uploaded successfully! Only you can access it.`, 
             'success'
         );
         
@@ -134,6 +163,7 @@ async function downloadFile() {
         const response = await fetch(`${API_URL}/download`, {
             method: 'POST',
             headers: {
+                ...getAuthHeaders(),
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ name, code })
@@ -142,6 +172,11 @@ async function downloadFile() {
         const result = await response.json();
 
         if (!response.ok) {
+            if (response.status === 401) {
+                localStorage.removeItem('authToken');
+                window.location.href = 'login.html';
+                return;
+            }
             throw new Error(result.error || 'Download failed');
         }
 
@@ -184,7 +219,9 @@ function showMessage(elementId, message, type) {
 
 async function updateStorageInfo() {
     try {
-        const response = await fetch(`${API_URL}/stats`);
+        const response = await fetch(`${API_URL}/stats`, {
+            headers: getAuthHeaders()
+        });
         const stats = await response.json();
 
         document.getElementById('fileCount').textContent = stats.totalFiles || 0;
