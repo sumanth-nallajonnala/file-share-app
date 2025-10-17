@@ -6,9 +6,9 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+    background: linear-gradient(-45deg, #e3f2fd, #f3e5f5, #e8f5e9, #fff3e0);
     background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    animation: gradientShift 20s ease infinite;
     min-height: 100vh;
     padding: 20px;
     display: flex;
@@ -16,6 +16,28 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
+}
+
+/* Subtle animated overlay */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(100, 150, 250, 0.05), rgba(150, 100, 250, 0.05));
+    animation: overlayShift 10s ease infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes overlayShift {
+    0% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0.7;
+    }
 }
 
 @keyframes gradientShift {
@@ -30,33 +52,10 @@ body {
     }
 }
 
-/* Floating particles effect */
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: moveParticles 20s linear infinite;
-    pointer-events: none;
-}
-
-@keyframes moveParticles {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(50px);
-    }
-}
-
 .container {
     background: white;
     border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
     max-width: 600px;
     width: 100%;
     padding: 40px;
@@ -64,7 +63,7 @@ body::before {
 
 h1 {
     text-align: center;
-    color: #667eea;
+    color: #5e72e4;
     margin-bottom: 10px;
     font-size: 2em;
 }
@@ -95,7 +94,7 @@ h1 {
 }
 
 .tab.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%);
     color: white;
 }
 
@@ -118,7 +117,7 @@ h1 {
 }
 
 .upload-area {
-    border: 3px dashed #667eea;
+    border: 3px dashed #5e72e4;
     border-radius: 15px;
     padding: 40px;
     text-align: center;
@@ -129,12 +128,12 @@ h1 {
 
 .upload-area:hover {
     background: #f8f9ff;
-    border-color: #764ba2;
+    border-color: #825ee4;
 }
 
 .upload-area.dragover {
     background: #f0f4ff;
-    border-color: #764ba2;
+    border-color: #825ee4;
     transform: scale(1.02);
 }
 
@@ -155,7 +154,7 @@ input[type="text"], input[type="password"] {
 
 input[type="text"]:focus, input[type="password"]:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #5e72e4;
 }
 
 input[type="file"] {
@@ -172,7 +171,7 @@ input[type="file"] {
 .btn {
     width: 100%;
     padding: 15px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%);
     color: white;
     border: none;
     border-radius: 10px;
@@ -184,7 +183,7 @@ input[type="file"] {
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 5px 20px rgba(94, 114, 228, 0.4);
 }
 
 .btn:active {
@@ -205,7 +204,7 @@ input[type="file"] {
 
 .file-name {
     font-weight: 600;
-    color: #667eea;
+    color: #5e72e4;
     word-break: break-all;
 }
 
@@ -253,7 +252,7 @@ input[type="file"] {
 }
 
 .download-btn {
-    background: #667eea;
+    background: #5e72e4;
     color: white;
     padding: 8px 20px;
     border: none;
@@ -263,7 +262,7 @@ input[type="file"] {
 }
 
 .download-btn:hover {
-    background: #764ba2;
+    background: #825ee4;
 }
 
 .storage-info {
@@ -292,9 +291,9 @@ input[type="file"] {
    ============================================ */
 
 .auth-page {
-    background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+    background: linear-gradient(-45deg, #e3f2fd, #f3e5f5, #e8f5e9, #fff3e0);
     background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    animation: gradientShift 20s ease infinite;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -311,9 +310,8 @@ input[type="file"] {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: moveParticles 20s linear infinite;
+    background: linear-gradient(135deg, rgba(100, 150, 250, 0.05), rgba(150, 100, 250, 0.05));
+    animation: overlayShift 10s ease infinite alternate;
     pointer-events: none;
 }
 
@@ -325,7 +323,7 @@ input[type="file"] {
 .auth-card {
     background: white;
     border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
     padding: 40px;
     animation: slideUp 0.5s ease-out;
 }
@@ -347,7 +345,7 @@ input[type="file"] {
 }
 
 .auth-header h1 {
-    color: #667eea;
+    color: #5e72e4;
     font-size: 1.8em;
     margin-bottom: 10px;
 }
@@ -387,8 +385,8 @@ input[type="file"] {
 
 .input-group input:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #5e72e4;
+    box-shadow: 0 0 0 3px rgba(94, 114, 228, 0.1);
 }
 
 .input-group small {
@@ -401,7 +399,7 @@ input[type="file"] {
 .auth-btn {
     width: 100%;
     padding: 16px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%);
     color: white;
     border: none;
     border-radius: 12px;
@@ -417,7 +415,7 @@ input[type="file"] {
 
 .auth-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 8px 25px rgba(94, 114, 228, 0.4);
 }
 
 .auth-btn:active {
@@ -426,13 +424,13 @@ input[type="file"] {
 
 .auth-btn.secondary {
     background: white;
-    color: #667eea;
-    border: 2px solid #667eea;
+    color: #5e72e4;
+    border: 2px solid #5e72e4;
 }
 
 .auth-btn.secondary:hover {
     background: #f8f9ff;
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 8px 25px rgba(94, 114, 228, 0.2);
 }
 
 .auth-footer {
@@ -448,14 +446,14 @@ input[type="file"] {
 }
 
 .auth-footer a {
-    color: #667eea;
+    color: #5e72e4;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .auth-footer a:hover {
-    color: #764ba2;
+    color: #825ee4;
 }
 
 /* Dashboard Header */
@@ -472,7 +470,7 @@ input[type="file"] {
 
 .logout-btn {
     padding: 10px 20px;
-    background: #ff4757;
+    background: #ff6b6b;
     color: white;
     border: none;
     border-radius: 8px;
@@ -516,7 +514,7 @@ input[type="file"] {
 }
 
 .feature h3 {
-    color: #667eea;
+    color: #5e72e4;
     margin: 10px 0 5px 0;
     font-size: 1.1em;
 }
@@ -551,7 +549,7 @@ input[type="file"] {
     }
 }
 
-/* Floating shapes animation */
+/* Softer floating shapes animation */
 .container::before,
 .container::after,
 .auth-card::before,
@@ -559,53 +557,54 @@ input[type="file"] {
     content: '';
     position: absolute;
     border-radius: 50%;
-    opacity: 0.15;
+    opacity: 0.08;
     z-index: -1;
     pointer-events: none;
+    filter: blur(40px);
 }
 
 .container::before {
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, #667eea, transparent);
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, #90caf9, transparent);
     top: -150px;
     right: -150px;
-    animation: float 8s ease-in-out infinite;
+    animation: float 12s ease-in-out infinite;
 }
 
 .container::after {
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, #764ba2, transparent);
+    background: radial-gradient(circle, #ce93d8, transparent);
     bottom: -200px;
     left: -200px;
-    animation: float 10s ease-in-out infinite reverse;
+    animation: float 15s ease-in-out infinite reverse;
 }
 
 .auth-card::before {
-    width: 250px;
-    height: 250px;
-    background: radial-gradient(circle, #f093fb, transparent);
-    top: -100px;
-    left: -100px;
-    animation: float 7s ease-in-out infinite;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, #a5d6a7, transparent);
+    top: -120px;
+    left: -120px;
+    animation: float 10s ease-in-out infinite;
 }
 
 .auth-card::after {
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, #4facfe, transparent);
-    bottom: -80px;
-    right: -80px;
-    animation: float 9s ease-in-out infinite reverse;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, #ffcc80, transparent);
+    bottom: -100px;
+    right: -100px;
+    animation: float 13s ease-in-out infinite reverse;
 }
 
 @keyframes float {
     0%, 100% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0) scale(1);
     }
     50% {
-        transform: translateY(-20px) rotate(180deg);
+        transform: translateY(-30px) scale(1.1);
     }
 }
 
